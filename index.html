@@ -5,7 +5,7 @@
 </head>
 <body>
     <div id="app">
-        <h1>whatsapp API - </h1><h3>Solicitação de assinatura gov.br</h3>
+        <h1>whatsapp API</h1><p>Solicitação de assinatura gov.br</p>
         <img src="" alt="QR code" id="qrcode"> 
         <h3>Logs:</h3>
         <ul class="logs"></ul>
@@ -15,7 +15,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.min.js" integrity="sha512-2ho+gY0H62N4Z9oxD422L2ZYXiOMq9l+Aub1QNz4Z4UDOtDVxz4vk6O6R3Hqqc9Y7qSvZFl7cy3+eZ/ITnUrLA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         $(document).ready(function(){
-            var socket = io.connect();
+            var socket = io();
 
             socket.on('message', function(msg){
                 $('.logs').append($('<li>').text(msg));
@@ -23,6 +23,7 @@
 
             socket.on('qr', function(src){
                 $('#qrcode').attr('src', src);
+                $('#qrcode').show();
             });
 
             socket.on('ready', function(src){
